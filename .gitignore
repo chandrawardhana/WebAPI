@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Saga.WebApi/bin/Debug/net8.0
+/Saga.WebApi/obj
+/Saga_Core/Saga.Domain/bin/Debug/net8.0
+/Saga_Core/Saga.DomainShared/bin/Debug/net8.0
+/Saga_Core/Saga.DomainShared/obj
+/Saga_Core/Saga.Domain/obj
