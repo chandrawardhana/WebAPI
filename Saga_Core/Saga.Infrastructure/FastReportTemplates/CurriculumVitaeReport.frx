@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReferencedAssemblies="System.dll&#13;&#10;System.Drawing.dll&#13;&#10;System.Data.dll&#13;&#10;System.Xml.dll&#13;&#10;FastReport.Compat.dll&#13;&#10;System.Windows.Forms.dll&#13;&#10;Npgsql.dll&#13;&#10;FastReport.DataVisualization.dll" ReportInfo.Created="11/08/2024 15:01:02" ReportInfo.Modified="11/14/2024 13:16:11" ReportInfo.CreatorVersion="2025.1.0.0" PrintSettings.ShowDialog="false" PrintSettings.PageNumbers="true" PrintSettings.ShowPrintDialog="false">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+  
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="Employees">
+      <Column Name="FullName" DataType="System.String"/>
+      <Column Name="Position" DataType="System.String"/>
+      <Column Name="PlaceOfBirth" DataType="System.String"/>
+      <Column Name="Gender" DataType="System.String"/>
+      <Column Name="Religion" DataType="System.String"/>
+      <Column Name="MaritalStatus" DataType="System.String"/>
+      <Column Name="Weight" DataType="System.Decimal"/>
+      <Column Name="Height" DataType="System.Decimal"/>
+      <Column Name="PhoneNumber" DataType="System.String"/>
+      <Column Name="SocialMedia" DataType="System.String"/>
+      <Column Name="Email" DataType="System.String"/>
+      <Column Name="Address" DataType="System.String"/>
+      <Column Name="City" DataType="System.String"/>
+      <Column Name="Province" DataType="System.String"/>
+      <Column Name="Country" DataType="System.String"/>
+      <Column Name="PostalCode" DataType="System.String"/>
+      <Column Name="Skills" DataType="System.String"/>
+      <Column Name="Languages" DataType="System.String"/>
+      <Column Name="Hobbies" DataType="System.String"/>
+      <Column Name="ImagePath" DataType="System.String"/>
+      <Column Name="Education1" DataType="System.String"/>
+      <Column Name="GraduatedYear1" DataType="System.Int32"/>
+      <Column Name="Score1" DataType="System.Decimal"/>
+      <Column Name="Education2" DataType="System.String"/>
+      <Column Name="GraduatedYear2" DataType="System.Int32"/>
+      <Column Name="Score2" DataType="System.Decimal"/>
+      <Column Name="Education3" DataType="System.String"/>
+      <Column Name="GraduatedYear3" DataType="System.Int32"/>
+      <Column Name="Score3" DataType="System.Decimal"/>
+      <Column Name="Education4" DataType="System.String"/>
+      <Column Name="GraduatedYear4" DataType="System.Int32"/>
+      <Column Name="Score4" DataType="System.Decimal"/>
+      <Column Name="Position1" DataType="System.String"/>
+      <Column Name="Company1" DataType="System.String"/>
+      <Column Name="YearStart1" DataType="System.Int32"/>
+      <Column Name="YearEnd1" DataType="System.Int32"/>
+      <Column Name="Position2" DataType="System.String"/>
+      <Column Name="Company2" DataType="System.String"/>
+      <Column Name="YearStart2" DataType="System.Int32"/>
+      <Column Name="YearEnd2" DataType="System.Int32"/>
+      <Column Name="Position3" DataType="System.String"/>
+      <Column Name="Company3" DataType="System.String"/>
+      <Column Name="YearStart3" DataType="System.Int32"/>
+      <Column Name="YearEnd3" DataType="System.Int32"/>
+      <Column Name="Position4" DataType="System.String"/>
+      <Column Name="Company4" DataType="System.String"/>
+      <Column Name="YearStart4" DataType="System.Int32"/>
+      <Column Name="YearEnd4" DataType="System.Int32"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="MainPage" Watermark.Font="Arial, 60pt">
+    <PageHeaderBand Name="PageHeader1" Width="718.2" Height="28.35">
+      <TextObject Name="Text53" Left="567" Width="132.3" Height="18.9" Text="Curriculum Vitae" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" DataSource="Employees" Width="718.2" Height="982.8" StartNewPage="true">
+      <PictureObject Name="Picture1" Left="18.9" Top="18.9" Width="170.1" Height="170.1" DataColumn="Employees.ImagePath"/>
+      <ShapeObject Name="Shape1" Left="18.9" Top="207.9" Width="170.1" Height="37.8" Fill.Color="OrangeRed"/>
+      <ShapeObject Name="Shape2" Left="230" Top="208.85" Width="472.5" Height="37.8" Fill.Color="Red"/>
+      <TextObject Name="Text1" Left="245.7" Top="217.35" Width="434.7" Height="18.9" Text="EDUCATIONS" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text2" Left="37.8" Top="217.35" Width="132.3" Height="18.9" Text="CONTACT" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text3" Left="226.8" Top="113.4" Width="113.4" Height="18.9" Text="Place Of Birth" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="18.9" Top="274.05" Width="170.1" Height="18.9" Text="[Employees.PhoneNumber]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="18.9" Top="302.4" Width="170.1" Height="18.9" Text="Social Media" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="18.9" Top="321.3" Width="170.1" Height="18.9" Text="[Employees.SocialMedia]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text8" Left="18.9" Top="349.65" Width="170.1" Height="18.9" Text="Email" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text9" Left="18.9" Top="368.55" Width="170.1" Height="18.9" Text="[Employees.Email]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text10" Left="18.9" Top="396.9" Width="170.1" Height="18.9" Text="Address" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text11" Left="18.9" Top="415.8" Width="170.1" Height="18.9" Text="[Employees.Address]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text12" Left="18.9" Top="472.5" Width="170.1" Height="18.9" Text="[Employees.Country]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text13" Left="18.9" Top="434.7" Width="170.1" Height="18.9" Text="[Employees.City]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text14" Left="18.9" Top="453.6" Width="170.1" Height="18.9" Text="[Employees.Province]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text15" Left="18.9" Top="491.4" Width="170.1" Height="18.9" Text="[Employees.PostalCode]" VertAlign="Center" Font="Arial, 10pt"/>
+      <ShapeObject Name="Shape3" Left="18.9" Top="529.2" Width="170.1" Height="37.8" Fill.Color="OrangeRed"/>
+      <TextObject Name="Text16" Left="37.8" Top="538.65" Width="132.3" Height="18.9" Text="SKILLS" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text17" Left="18.9" Top="576.45" Width="170.1" Height="103.95" Text="[Employees.Skills]" VertAlign="Center" Font="Arial, 10pt"/>
+      <ShapeObject Name="Shape4" Left="18.9" Top="699.3" Width="170.1" Height="37.8" Fill.Color="OrangeRed"/>
+      <TextObject Name="Text19" Left="37.8" Top="708.75" Width="132.3" Height="18.9" Text="LANGUAGES" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <ShapeObject Name="Shape5" Left="18.9" Top="812.7" Width="170.1" Height="37.8" Fill.Color="OrangeRed"/>
+      <TextObject Name="Text21" Left="37.8" Top="822.15" Width="132.3" Height="18.9" Text="HOBBIES" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text22" Left="18.9" Top="859.95" Width="170.1" Height="18.9" Text="[Employees.Hobbies]" VertAlign="Center" Font="Arial, 10pt"/>
+      <ShapeObject Name="Shape6" Left="226.8" Top="396.9" Width="472.5" Height="37.8" Fill.Color="OrangeRed"/>
+      <TextObject Name="Text29" Left="242.5" Top="405.4" Width="434.7" Height="18.9" Text="EXPERIENCES" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text36" Left="18.9" Top="746.55" Width="170.1" Height="66.15" Text="[Employees.Languages]" Font="Arial, 10pt"/>
+      <TextObject Name="Text38" Left="226.8" Top="18.9" Width="472.5" Height="37.8" Text="[Employees.FullName]" VertAlign="Center" Font="Arial, 16pt"/>
+      <TextObject Name="Text39" Left="226.8" Top="56.7" Width="472.5" Height="18.9" Text="[Employees.Position]" VertAlign="Center" Font="Arial, 12pt"/>
+      <TextObject Name="Text40" Left="226.8" Top="132.3" Width="113.4" Height="18.9" Text="Gender" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text41" Left="226.8" Top="151.2" Width="113.4" Height="18.9" Text="Religion" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text42" Left="226.8" Top="170.1" Width="113.4" Height="18.9" Text="Marital Status" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <LineObject Name="Line1" Left="226.8" Top="94.5" Width="472.5"/>
+      <TextObject Name="Text43" Left="359.1" Top="113.4" Width="132.3" Height="18.9" Text="[Employees.PlaceOfBirth]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text44" Left="359.1" Top="132.3" Width="132.3" Height="18.9" Text="[Employees.Gender]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text45" Left="359.1" Top="151.2" Width="132.3" Height="18.9" Text="[Employees.Religion]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text46" Left="359.1" Top="170.1" Width="132.3" Height="18.9" Text="[Employees.MaritalStatus]" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text47" Left="529.2" Top="113.4" Width="56.7" Height="18.9" Text="Weight" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text48" Left="529.2" Top="132.3" Width="56.7" Height="18.9" Text="Height" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text49" Left="585.9" Top="113.4" Width="37.8" Height="18.9" Text="[Employees.Weight]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text50" Left="585.9" Top="132.3" Width="37.8" Height="18.9" Text="[Employees.Height]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text51" Left="623.7" Top="113.4" Width="28.35" Height="18.9" Text="kg" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text52" Left="623.7" Top="132.3" Width="28.35" Height="18.9" Text="cm" VertAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text54" Left="18.9" Top="255.15" Width="170.1" Height="18.9" Text="WhatsApp" VertAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TableObject Name="TableEducations" Left="226.8" Top="255.15" Width="472.5" Height="102.06" Border.Lines="All">
+        <TableColumn Name="Column1" Width="229.95"/>
+        <TableColumn Name="Column2" Width="116.55"/>
+        <TableColumn Name="Column3" Width="126"/>
+        <TableRow Name="Row1" Height="22.68">
+          <TableCell Name="Cell1" Border.Lines="All" Text="Name" Font="Arial, 10pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="Graduated" Font="Arial, 10pt"/>
+          <TableCell Name="Cell3" Border.Lines="All" Text="Score" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="22.68">
+          <TableCell Name="Cell6" Border.Lines="All" Text="[Employees.Education1]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="[Employees.GraduatedYear1]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell8" Border.Lines="All" Text="[Employees.Score1]" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row3" Height="22.68">
+          <TableCell Name="Cell11" Border.Lines="All" Text="[Employees.Education2]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell12" Border.Lines="All" Text="[Employees.GraduatedYear2]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell13" Border.Lines="All" Text="[Employees.Score2]" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row4" Height="22.68">
+          <TableCell Name="Cell16" Border.Lines="All" Text="[Employees.Education3]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell17" Border.Lines="All" Text="[Employees.GraduatedYear3]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell18" Border.Lines="All" Text="[Employees.Score3]" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row5" Height="22.68">
+          <TableCell Name="Cell21" Border.Lines="All" Text="[Employees.Education4]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell22" Border.Lines="All" Text="[Employees.GraduatedYear4]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell23" Border.Lines="All" Text="[Employees.Score4]" Font="Arial, 10pt"/>
+        </TableRow>
+      </TableObject>
+      <TableObject Name="TableExperiences" Left="226.8" Top="444.15" Width="472.5" Height="113.4" Border.Lines="All">
+        <TableColumn Name="Column4" Width="170.1"/>
+        <TableColumn Name="Column5" Width="170.1"/>
+        <TableColumn Name="Column6" Width="66.15"/>
+        <TableColumn Name="Column7" Width="66.15"/>
+        <TableRow Name="Row6" Height="22.68">
+          <TableCell Name="Cell24" Border.Lines="All" Text="Position" Font="Arial, 10pt"/>
+          <TableCell Name="Cell25" Border.Lines="All" Text="Company" Font="Arial, 10pt"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="Start" Font="Arial, 10pt"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="End" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row7" Height="22.68">
+          <TableCell Name="Cell28" Border.Lines="All" Text="[Employees.Position1]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell29" Border.Lines="All" Text="[Employees.Company1]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell30" Border.Lines="All" Text="[Employees.YearStart1]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell31" Border.Lines="All" Text="[Employees.YearEnd1]" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row8" Height="22.68">
+          <TableCell Name="Cell32" Border.Lines="All" Text="[Employees.Position2]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell33" Border.Lines="All" Text="[Employees.Company2]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell34" Border.Lines="All" Text="[Employees.YearStart2]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell35" Border.Lines="All" Text="[Employees.YearEnd2]" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row9" Height="22.68">
+          <TableCell Name="Cell36" Border.Lines="All" Text="[Employees.Position3]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell37" Border.Lines="All" Text="[Employees.Company3]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell38" Border.Lines="All" Text="[Employees.YearStart3]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell39" Border.Lines="All" Text="[Employees.YearEnd3]" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row10" Height="22.68">
+          <TableCell Name="Cell40" Border.Lines="All" Text="[Employees.Position4]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell41" Border.Lines="All" Text="[Employees.Company4]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell42" Border.Lines="All" Text="[Employees.YearStart4]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell43" Border.Lines="All" Text="[Employees.YearEnd4]" Font="Arial, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="1019.15" Width="718.2" Height="18.9">
+      <!-- Add page numbers if desired -->
+      <TextObject Name="PageNumber" Left="614.25" Width="94.5" Height="18.9" 
+                  Text="Page [Page] of [TotalPages#]" HorzAlign="Right" Font="Arial, 10pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

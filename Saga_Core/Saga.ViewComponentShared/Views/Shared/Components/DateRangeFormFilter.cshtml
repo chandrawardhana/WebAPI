@@ -1,0 +1,20 @@
+﻿@using Saga.DomainShared.Constants
+@model Saga.ViewComponentShared.ViewModels.DateRangeFormFilterViewModel
+
+@(await Component.InvokeAsync(AppPart.BasicFormFilter, Model.ConvertToBasicDefault()))
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group" style="margin-bottom: 5px;">
+            <label for="DateRange" class="col-sm-4 control-label" style="text-align: left;">Date Range</label>
+            <div class="col-sm-8">
+                <div class="input-group date">
+                    <input type="text" class="form-control input-sm pull-left" id="txtDateRange">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

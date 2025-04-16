@@ -1,0 +1,32 @@
+﻿@using Saga.DomainShared.Constants
+@model Saga.ViewComponentShared.ViewModels.MonthlyFormFilterViewModel
+
+@(await Component.InvokeAsync(AppPart.BasicFormFilter, Model.ConvertToBasicDefault()))
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group" style="margin-bottom: 5px;">
+            <label for="Periode" class="col-sm-4 control-label" style="text-align: left;">Periode</label>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <select class="form-control input-sm" id="slc-month" style="width: 100%;" name="MonthSelected">
+                            @foreach (var item in Model.MonthPeriodes)
+                            {
+                                <option value="@item.Value" selected="@(item.Value == Model.MonthSelected.ToString())">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-5">
+                        <select class="form-control input-sm" id="slc-year" style="width: 100%;" name="YearSelected">
+                            @foreach (var item in Model.YearPeriodes)
+                            {
+                                <option value="@item.Value" selected="@(item.Value == Model.YearSelected.ToString())">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

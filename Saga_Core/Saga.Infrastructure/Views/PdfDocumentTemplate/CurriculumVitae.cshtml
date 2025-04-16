@@ -1,0 +1,339 @@
+﻿@using Microsoft.AspNetCore.Hosting
+@using Saga.Domain.Entities.Employees
+@using Saga.Infrastructure.Constants
+@inject IWebHostEnvironment _webHostEnvironment
+@model Saga.Domain.ViewModels.Employees.CurriculumVitaeReport
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Curriculum Vitae Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            width: 100%;
+            max-width: 718.2px;
+            margin: 0 auto;
+        }
+        .header-row {
+            text-align: right;
+            padding: 10px 0;
+        }
+        .header-row h3 {
+            font-weight: bold;
+            margin: 0;
+        }
+        .main-layout {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .left-column {
+            width: 170px;
+            padding-right: 20px;
+            vertical-align: top;
+        }
+        .right-column {
+            vertical-align: top;
+        }
+        .photo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        .photo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .personal-name {
+            margin: 0;
+            font-size: 16pt;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .personal-position {
+            margin: 0;
+            font-size: 12pt;
+            color: #000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #000;
+        }
+        .personal-details {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .personal-details td {
+            padding: 5px;
+            vertical-align: top;
+        }
+        .detail-label {
+            font-weight: bold;
+            width: 120px;
+            color: #000;
+        }
+        .detail-value {
+            color: #000;
+        }
+        .section-header {
+            background-color: #FF4500;
+            color: white;
+            padding: 10px;
+            margin: 20px 0 10px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10pt;
+        }
+        .contact-info table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .contact-info td {
+            padding: 5px 0;
+            vertical-align: top;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .data-table th, 
+        .data-table td {
+            border: 1px solid #000;
+            padding: 5px;
+            font-size: 10pt;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #fff;
+            font-weight: bold;
+        }
+        .skills-languages-hobbies ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .skills-languages-hobbies li {
+            margin-bottom: 5px;
+        }
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            padding: 10px;
+            font-size: 10pt;
+        }
+        @@media print {
+            body {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .page-footer {
+                position: absolute;
+            }
+        }
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+    @if (Model.CurriculumVitae != null && Model.CurriculumVitae.Any())
+    {
+        var employee = Model.CurriculumVitae.First();
+        var imagePath = System.IO.Path.Combine(_webHostEnvironment.ContentRootPath, "Resources", "Uploads", employee.Asset.FileName);
+        var phoneNumber = employee.EmployeePersonal.PhoneNumber ?? String.Empty;
+        var socialMedia = employee.EmployeePersonal.SocialMedia ?? String.Empty;
+        var email = employee.EmployeePersonal.Email ?? String.Empty;
+        var address = employee.EmployeePersonal.Address ?? String.Empty;
+        var city = employee.EmployeePersonal.City?.Name ?? String.Empty;
+        var province = employee.EmployeePersonal.Province?.Name ?? String.Empty;
+        var country = employee.EmployeePersonal.Country?.Name ?? String.Empty;
+        var postalCode = employee.EmployeePersonal.PostalCode ?? String.Empty;
+        var placeOfBirth = employee.EmployeePersonal.PlaceOfBirth ?? String.Empty;
+        var gender = employee.EmployeePersonal.Gender.ToString();
+        var religion = employee.EmployeePersonal.Religion?.Name ?? String.Empty;
+        var maritalStatus = employee.EmployeePersonal.MaritalStatus.ToString();
+        var weight = employee.EmployeePersonal.Weight ?? 0;
+        var height = employee.EmployeePersonal.Height ?? 0;
+
+        <div class="header-row">
+            <h3>Curriculum Vitae</h3>
+        </div>
+
+        <table class="main-layout">
+            <tr>
+                <td class="left-column">
+                    <div class="photo">
+                        @if (employee.PhotoKey.HasValue && employee.PhotoKey != Guid.Empty)
+                        {
+                            <img src="@imagePath" alt="Employee Photo" />
+                        }
+                    </div>
+
+                    <div class="section-header">CONTACT</div>
+                    <table class="contact-info">
+                        <tr>
+                            <td class="detail-label">WhatsApp</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-value">@phoneNumber</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-label">Social Media</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-value">@socialMedia</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-label">Email</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-value">@email</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-label">Address</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-value">
+                                @address<br/>
+                                @city, @province<br/>
+                                @country @postalCode
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="section-header">SKILLS</div>
+                    <div class="skills-languages-hobbies">
+                        @if (employee.EmployeeSkills != null)
+                        {
+                            <ul>
+                                @foreach (var skill in employee.EmployeeSkills)
+                                {
+                                    <li>@skill.Skill.Name</li>
+                                }
+                            </ul>
+                        }
+                    </div>
+
+                    <div class="section-header">LANGUAGES</div>
+                    <div class="skills-languages-hobbies">
+                        @if (employee.EmployeeLanguages != null)
+                        {
+                            <ul>
+                                @foreach (var language in employee.EmployeeLanguages)
+                                {
+                                    <li>@language.Language.Name</li>
+                                }
+                            </ul>
+                        }
+                    </div>
+
+                    <div class="section-header">HOBBIES</div>
+                    <div class="skills-languages-hobbies">
+                        @if (employee.EmployeeHobbies != null)
+                        {
+                            <ul>
+                                @foreach (var hobby in employee.EmployeeHobbies)
+                                {
+                                    <li>@hobby.Hobby.Name</li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </td>
+                <td class="right-column">
+                    <h1 class="personal-name">@(employee.FirstName + " " + employee.LastName)</h1>
+                    <h2 class="personal-position">@(employee.Position?.Name ?? "N/A")</h2>
+
+                    <table class="personal-details">
+                        <tr>
+                            <td class="detail-label">Place of Birth</td>
+                            <td class="detail-value">@placeOfBirth</td>
+                            <td class="detail-label">Weight</td>
+                            <td class="detail-value">@weight kg</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-label">Gender</td>
+                            <td class="detail-value">@gender</td>
+                            <td class="detail-label">Height</td>
+                            <td class="detail-value">@height cm</td>
+                        </tr>
+                        <tr>
+                            <td class="detail-label">Religion</td>
+                            <td class="detail-value">@religion</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="detail-label">Marital Status</td>
+                            <td class="detail-value">@maritalStatus</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <div class="section-header">EDUCATIONS</div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Graduated</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (employee.EmployeeEducations != null)
+                            {
+                                @foreach (var education in employee.EmployeeEducations)
+                                {
+                                    <tr>
+                                        <td>@education.Education.Name</td>
+                                        <td>@education.GraduatedYear</td>
+                                        <td>@education.Score</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="section-header">EXPERIENCES</div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Company</th>
+                                <th>Start</th>
+                                <th>End</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (employee.EmployeeExperiences != null)
+                            {
+                                @foreach (var experience in employee.EmployeeExperiences)
+                                {
+                                    <tr>
+                                        <td>@experience.Position.Name</td>
+                                        <td>@experience.CompanyName</td>
+                                        <td>@experience.YearStart</td>
+                                        <td>@experience.YearEnd</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <div class="page-footer">
+            Page @(Context.Request.Query["page"])
+        </div>
+    }
+</body>
+</html>

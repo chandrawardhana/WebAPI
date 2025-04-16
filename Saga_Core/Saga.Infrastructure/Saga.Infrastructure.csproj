@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<PlatformTarget>AnyCPU</PlatformTarget>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="ConnectingApps.SmartInject" Version="2.1.0" />
+	<PackageReference Include="DinkToPdfCopyDependencies" Version="1.0.8" />
+    <PackageReference Include="FastReport.DataVisualization" Version="2024.2.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+	<PackageReference Include="ClosedXML" Version="0.104.1" />
+	<PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2024.2.14" />
+	<PackageReference Include="FastReport.OpenSource" Version="2024.2.14" />
+	<PackageReference Include="FastReport.OpenSource.Web" Version="2024.2.14" />
+	<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.3.1" />
+	<PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Saga.Mediator\Saga.Mediator.csproj" />
+    <ProjectReference Include="..\Saga.Persistence\Saga.Persistence.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Views\**\*.cshtml">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Views\**\*.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="FastReportTemplates\CompanyPolicyReport.frx" />
+	  <None Remove="FastReportTemplates\CurriculumVitaeReport.frx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="FastReportTemplates\CompanyPolicyReport.frx">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="FastReportTemplates\CurriculumVitaeReport.frx">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Interop.zkemkeeper">
+			<HintPath>..\Saga.DomainShared\Libraries\Interop.zkemkeeper.dll</HintPath>
+			<EmbedInteropTypes>False</EmbedInteropTypes>
+		</Reference>
+	</ItemGroup>
+
+</Project>
