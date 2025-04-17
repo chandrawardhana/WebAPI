@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Saga.Domain.Entities.Employees;
+using Saga.Domain.Entities.Organizations;
 using Saga.WebApi.Infrastructures.Services;
+using SidoAgung.WebApi.Common.Model;
+using System.Net;
 
 namespace Saga.WebApi.Controllers;
 
@@ -9,32 +13,65 @@ namespace Saga.WebApi.Controllers;
 public class CommonController(IRepositoryService _repositoryService) : ControllerBase
 {
     [HttpGet("{companykey}")]
-    public async Task<IActionResult> GetCompany(Guid companykey)
+    public async Task<ApiResponse<Company>> GetCompany(Guid companykey)
     {
         var company = await _repositoryService.GetCompany(companykey);
         if (company == null)
-            return NotFound("Data tidak ditemukan!");
-
-        return Ok(company);
+        {
+            return new ApiResponse<Company>
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                Message = "Data Not Found!",
+                Data = null
+            };
+        }
+        return new ApiResponse<Company>
+        {
+            StatusCode = HttpStatusCode.OK,
+            Message = "Success",
+            Data = company
+        };
     }
 
     [HttpGet("{organizationkey}")]
-    public async Task<IActionResult> GetOrganization(Guid organizationkey)
+    public async Task<ApiResponse<Organization>> GetOrganization(Guid organizationkey)
     {
         var organization = await _repositoryService.GetOrganization(organizationkey);
         if (organization == null)
-            return NotFound("Data tidak ditemukan!");
-
-        return Ok(organization);
+        {
+            return new ApiResponse<Organization>
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                Message = "Data Not Found!",
+                Data = null
+            };
+        }
+        return new ApiResponse<Organization>
+        {
+            StatusCode = HttpStatusCode.OK,
+            Message = "Success",
+            Data = organization
+        };
     }
     [HttpGet("{positionkey}")]
-    public async Task<IActionResult> GetPosition(Guid positionkey)
+    public async Task<ApiResponse<Position>> GetPosition(Guid positionkey)
     {
         var position = await _repositoryService.GetPosition(positionkey);
         if (position == null)
-            return NotFound("Data tidak ditemukan!");
-
-        return Ok(position);
+        {
+            return new ApiResponse<Position>
+            {
+                StatusCode = HttpStatusCode.NotFound,
+                Message = "Data Not Found!",
+                Data = null
+            };
+        }
+        return new ApiResponse<Position>
+        {
+            StatusCode = HttpStatusCode.OK,
+            Message = "Success",
+            Data = position
+        };
     }
 
     [HttpGet("{titlekey}")]

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Saga.Mediator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78846f6862261de1099c7558856f95660ab51db5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Saga.Mediator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Saga.Mediator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

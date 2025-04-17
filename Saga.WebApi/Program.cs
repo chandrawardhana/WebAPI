@@ -40,10 +40,11 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { 
-        Title = "WEB API SAGA", 
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "WEB API SAGA",
         Version = "v1",
-        Description = "API untuk aplikasi Mobile SAGA", 
+        Description = "API untuk aplikasi Mobile SAGA",
         License = new OpenApiLicense
         {
             Name = "SAGA WEB",
